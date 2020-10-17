@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Phoerest Share</title>
+	<meta name="description" content="A simple local wireless file sharing app using Node.js">
+	<link rel="icon" type="image/png" href="img/icon.png" />
+	<link rel="stylesheet" href="css/index.css">
+	<link rel="stylesheet" href="css/theme.css">
+</head>
+<body>
+	<div class="mainBlock">
+		<label for="userPassInput" class="inputLabel">Password:</label>
+		<div class="inputContainer"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="svgIcon sI0" onclick="showPass(this, 1, 'text')"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path><circle cx="12" cy="12" r="3"></circle></svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="svgIcon sI0" style="display:none;" onclick="showPass(this, 0, 'password')"><path d="M17.94 17.94A10.07 10.07 0 0 1 12 20c-7 0-11-8-11-8a18.45 18.45 0 0 1 5.06-5.94M9.9 4.24A9.12 9.12 0 0 1 12 4c7 0 11 8 11 8a18.5 18.5 0 0 1-2.16 3.19m-6.72-1.07a3 3 0 1 1-4.24-4.24"></path><line x1="1" y1="1" x2="23" y2="23"></line></svg><input type="password" id="userPassInput" class="inputField" style="z-index:1;" /></div>
+	</div>
+	<div class="mainBlock">
+		<div class="inputLabel">Selected files:</div>
+		<div id="selectedFilesContainer"></div>
+		<label for="userPassInput" class="inputLabel">Chunk size (Bytes):</label>
+		<div class="inputContainer"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="svgIcon sI0"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"></path><polyline points="3.27 6.96 12 12.01 20.73 6.96"></polyline><line x1="12" y1="22.08" x2="12" y2="12"></line></svg><input type="number" id="userChunkSizeInput" class="inputField" value="5000000" /></div>
+		<div id="uploadProgress"></div>
+		<label for="userFileInput" class="inputButton"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="svgIcon sI1"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="12" y1="18" x2="12" y2="12"></line><line x1="9" y1="15" x2="15" y2="15"></line></svg><div class="buttonText">Open</div></label>
+		<div onclick="uploadFile()" class="inputButton iB1"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="svgIcon sI2"><polyline points="16 16 12 12 8 16"></polyline><line x1="12" y1="12" x2="12" y2="21"></line><path d="M20.39 18.39A5 5 0 0 0 18 9h-1.26A8 8 0 1 0 3 16.3"></path><polyline points="16 16 12 12 8 16"></polyline></svg><div class="buttonText bT0">Upload</div></div>
+		<input type="file" id="userFileInput" multiple="multiple" style="display:none;" onchange="listSelectedFiles(this)" />
+	</div>
+	<div class="mainBlock">
+		<div class="inputLabel">Shared files:</div>
+		<div id="sharedFilesContainer"></div>
+		<div onclick="getFiles()" class="inputButton iB0"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="svgIcon sI1"><polyline points="8 17 12 21 16 17"></polyline><line x1="12" y1="12" x2="12" y2="21"></line><path d="M20.88 18.09A5 5 0 0 0 18 9h-1.26A8 8 0 1 0 3 16.29"></path></svg><div class="buttonText">Get</div></div>
+	</div>
+	<div class="mainBlock">
+		<div class="inputLabel">Phoerest Share:</div>
+		<a href=""><label for="userFileInput" class="inputButton"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="svgIcon sI1"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="16" x2="12" y2="12"></line><line x1="12" y1="8" x2="12.01" y2="8"></line></svg><div class="buttonText">Info</div></label></a>
+		<a href="https://buymeacoff.ee/phoerest" target="_blank"><div class="inputButton iB1"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="svgIcon sI2"><polyline points="20 12 20 22 4 22 4 12"></polyline><rect x="2" y="7" width="20" height="5"></rect><line x1="12" y1="22" x2="12" y2="7"></line><path d="M12 7H7.5a2.5 2.5 0 0 1 0-5C11 2 12 7 12 7z"></path><path d="M12 7h4.5a2.5 2.5 0 0 0 0-5C13 2 12 7 12 7z"></path></svg><div class="buttonText bT0">Donate</div></div>
+	</div>
+	<form method="post" action="/" encoding="multipart/form-data" id="fileForm" style="display:none;">
+		<input type="password" name="pass" id="userPassField" />
+		<input type="text" name="fileName" id="fileNameField" />
+		<input type="text" name="uploadStatus" id="uploadStatusField" />
+	</form>
+	<script src="js/index.js"></script>
+</body>
+</html>

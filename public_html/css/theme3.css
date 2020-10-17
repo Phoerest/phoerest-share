@@ -1,0 +1,19 @@
+body{background-color:#144879;}
+.mainBlock{margin-top:40px;padding-bottom:40px;background-color:#144879;box-shadow:-10px -10px 40px #1C65AB, 10px 10px 40px #0A253E;}
+.inputButton{margin-top:40px;background-color:#144879;box-shadow:-10px -10px 40px #1C65AB, 10px 10px 40px #0A253E;}
+.iB1{background-color:#144879;}
+.buttonText{color:#2A98FF;}
+.bT0{color:#00A922;}
+.inputLabel{margin-top:40px;color:#D3EAFF;}
+.inputContainer{margin-top:40px;background-color:#144879;box-shadow:-10px -10px 40px #1C65AB, 10px 10px 40px #0A253E;}
+.inputField{color:#D3EAFF;}
+.filelistEntry{color:#D3EAFF;}
+.seperator{background-color:#D3EAFF;}
+.sI0{stroke:#D3EAFF;}.sI1{stroke:#2A98FF;}.sI2{stroke:#00A922;}
+@media screen and (max-width: 500px) {
+	.mainBlock{margin-top:8vw;padding-bottom:8vw;box-shadow:-2vw -2vw 8vw #1C65AB, 2vw 2vw 8vw #0A253E;}
+	.inputButton{margin-top:8vw;box-shadow:-2vw -2vw 8vw #1C65AB, 2vw 2vw 8vw #0A253E;}
+	.inputLabel{margin-top:8vw;}
+	.inputContainer{margin-top:8vw;box-shadow:-2vw -2vw 8vw #1C65AB, 2vw 2vw 8vw #0A253E;}
+}
+

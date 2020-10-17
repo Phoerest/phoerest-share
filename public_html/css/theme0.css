@@ -1,0 +1,19 @@
+body{background-color:#FFF;}
+.mainBlock{margin-top:20px;padding-bottom:20px;background-color:#FFF;box-shadow:0px 10px 30px #DCDCDC;}
+.inputButton{margin-top:20px;background-color:#2A98FF;box-shadow:0px 0px 0px #FFF;}
+.iB1{background-color:#00BD26;}
+.buttonText{color:#FFF;}
+.bT0{color:#FFF;}
+.inputLabel{margin-top:20px;color:#2A98FF;}
+.inputContainer{margin-top:20px;background-color:#E5F3FF;box-shadow:0px 0px 0px #FFF;}
+.inputField{color:#2A98FF;}
+.filelistEntry{color:#2A98FF;}
+.seperator{background-color:#2A98FF;}
+.sI0{stroke:#2A98FF;}.sI1{stroke:#FFF;}.sI2{stroke:#FFF;}
+@media screen and (max-width: 500px) {
+	.mainBlock{margin-top:4vw;padding-bottom:4vw;box-shadow:0vw 2vw 6vw #DCDCDC;}
+	.inputButton{margin-top:4vw;box-shadow:0vw 0vw 0vw #FFF;}
+	.inputLabel{margin-top:4vw;}
+	.inputContainer{margin-top:4vw;box-shadow:0vw 0vw 0vw #FFF;}
+}
+
